@@ -1,5 +1,21 @@
 package com.youtube.music.model
 
+import java.io.Serializable
+
+
+data class PlayListModel(
+    var id: String = "",
+    var title: String = "",
+    var channelId: String = "",
+    var image: String = "",
+    var itemCount: Int = 0,
+    //"publishedAt": "2019-02-06T18:51:56.000Z",
+    var publishedAt: String = ""
+) : Serializable
+
+
+/*
+
 class PlaylistModel(id : Int?, thumbnail: Int?, title: String?, video_count: Int?) {
     private var id : Int
     private var thumbnail : Int
@@ -42,3 +58,4 @@ class PlaylistModel(id : Int?, thumbnail: Int?, title: String?, video_count: Int
         return video_count
     }
 }
+*/

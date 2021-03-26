@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".activities.LoginActivity">
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/ceneterlogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:id="@+id/youtubelogo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_youtube"/>
+
+            <TextView
+                android:id="@+id/musictext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/youtubelogo"
+                android:padding="5dp"
+                android:text="Music"
+                android:textColor="@color/white"
+                android:textSize="50dp"
+                android:layout_toRightOf="@+id/youtubelogo" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/aftermusiclogo"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ceneterlogo"
+            android:text="Open the world of music"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:id="@+id/aftermusicworld"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/aftermusiclogo"
+            android:textAlignment="center"
+            android:text="Sign in toi stream and browswer playlists,albums and artists from YouTube Music "
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal" />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/sign_in_button"
+        android:background="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN IN"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>

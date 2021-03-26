@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "209513860276",
+    "project_id": "fir-626a6",
+    "storage_bucket": "fir-626a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209513860276:android:f54cf02c4c924092575be1",
+        "android_client_info": {
+          "package_name": "com.youtube.music"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209513860276-fpqe5kidtqd2n0gu76ndvkom1hetghlb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLXWe0YWuArGyVm09b5qFtaVUcQZt8MnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209513860276-fpqe5kidtqd2n0gu76ndvkom1hetghlb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
