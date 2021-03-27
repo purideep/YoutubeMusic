@@ -5,13 +5,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.youtube.music.R
 import com.youtube.music.model.PlayListModel
+import com.youtube.music.model.PlaylistVideo
 
-class PlaylistRecyclerAdapter(private var model: List<PlayListModel>) :
+class PlaylistRecyclerAdapter(
+    private var list: List<PlaylistVideo>,
+    val listener: PlayListsAdapter.PlayListAdapterListener
+) :
     RecyclerView.Adapter<PlaylistRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.thumbnail)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onVideoClicked(list[adapterPosition])
+            }
+        }
     }
 
     override fun onCreateViewHolder(
@@ -24,10 +35,11 @@ class PlaylistRecyclerAdapter(private var model: List<PlayListModel>) :
     }
 
     override fun onBindViewHolder(holder: PlaylistRecyclerAdapter.ViewHolder, position: Int) {
-        holder.image.setImageResource(R.drawable.poster)
+        Glide.with(holder.image).load(list[position].image).placeholder(R.drawable.poster)
+            .into(holder.image)
     }
 
     override fun getItemCount(): Int {
-        return model.size
+        return list.size
     }
 }

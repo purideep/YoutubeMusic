@@ -5,4 +5,7 @@
     <string name="video_count">6 Videos</string>
     <string name="title">Title</string>
     <string name="author">Author</string>
+    <string name="server_client_id">209513860276-ge1k1dk406kgnmkho0bmhu3njn963lns.apps.googleusercontent.com</string>
+    <string name="server_client_secret">5e5F24SIINsBSfBedx21ueoB</string>
+    <string name="google_client_id">209513860276-ge1k1dk406kgnmkho0bmhu3njn963lns.apps.googleusercontent.com</string>
 </resources>

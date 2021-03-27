@@ -10,7 +10,8 @@ data class PlayListModel(
     var image: String = "",
     var itemCount: Int = 0,
     //"publishedAt": "2019-02-06T18:51:56.000Z",
-    var publishedAt: String = ""
+    var publishedAt: String = "",
+    var list: MutableList<PlaylistVideo> = mutableListOf<PlaylistVideo>()
 ) : Serializable
 
 
