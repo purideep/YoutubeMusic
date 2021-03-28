@@ -18,6 +18,7 @@ object JSONParser {
                 val m = PlayListModel()
                 m.id = o.getString("id")
                 m.title = snippet.getString("title")
+                m.description = snippet.getString("description")
                 m.channelId = snippet.getString("channelId")
                 m.image = snippet.getJSONObject("thumbnails").getJSONObject("high").getString("url")
                 m.itemCount = o.getJSONObject("contentDetails").getInt("itemCount")

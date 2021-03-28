@@ -6,14 +6,20 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.auth.api.Auth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 import com.youtube.music.R
 import com.youtube.music.adapter.PlayListsAdapter
-import com.youtube.music.adapter.PlaylistRecyclerAdapter
+import com.youtube.music.database.DatabaseHandler
 import com.youtube.music.model.PlayListModel
 import com.youtube.music.model.PlaylistVideo
 import com.youtube.music.presenter.MainActivityPresenter
 import com.youtube.music.presenter.MainActivityView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), MainActivityView,
     PlayListsAdapter.PlayListAdapterListener {
@@ -38,11 +44,11 @@ class MainActivity : AppCompatActivity(), MainActivityView,
     }
 
     override fun onViewAllClicked(model: PlayListModel) {
-        startActivity(Intent(this,PlaylistActivity::class.java).putExtra("data",model))
+        startActivity(Intent(this, PlaylistActivity::class.java).putExtra("data", model))
     }
 
     override fun onVideoClicked(model: PlaylistVideo) {
-        startActivity(Intent(this,VideoPlayerActivity::class.java).putExtra("data",model))
+        startActivity(Intent(this, VideoPlayerActivity::class.java).putExtra("data", model))
     }
 
 }

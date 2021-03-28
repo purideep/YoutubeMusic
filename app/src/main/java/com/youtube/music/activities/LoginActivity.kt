@@ -44,6 +44,10 @@ class LoginActivity : AppCompatActivity() {
         SharedPref.init(this)
         presenter = LoginPresenter()
         prepareGoogleSignIn();
+
+        if (Firebase.auth.currentUser != null) {
+            navigateToMain()
+        }
     }
 
     private fun prepareGoogleSignIn() {

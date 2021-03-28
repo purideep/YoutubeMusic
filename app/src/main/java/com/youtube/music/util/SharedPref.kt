@@ -2,16 +2,19 @@ package com.youtube.music.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.youtube.music.database.DatabaseHandler
 import java.io.File
 
 object SharedPref {
     var pref: SharedPreferences? = null
     var cacheDir: File? = null
+    var dbHelper: DatabaseHandler? = null
 
     //Should be called first
     fun init(context: Context) {
         pref = context.getSharedPreferences("settings", Context.MODE_PRIVATE);
         cacheDir = context.cacheDir
+        dbHelper = DatabaseHandler(context)
     }
 
     inline fun edit(operation: (SharedPreferences.Editor) -> Unit) {

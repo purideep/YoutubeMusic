@@ -9,6 +9,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.youtube.music.R
 import com.youtube.music.adapter.PlayListAdapter
 import com.youtube.music.adapter.PlayListsAdapter
@@ -29,6 +30,11 @@ class PlaylistActivity : AppCompatActivity(), PlayListView,
     var imageView: ImageView? = null
     var titleTV: TextView? = null
     var videoCount: TextView? = null
+    var description: TextView? = null
+
+//    var playListMainImage: ImageView? = null
+//    var playListTitle: TextView? = null
+//    var videoCount: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +43,13 @@ class PlaylistActivity : AppCompatActivity(), PlayListView,
         setupListeners()
         val model = intent.getSerializableExtra("data")
         if (model is PlayListModel) {
+            titleTV?.setText(model.title)
+            Glide.with(this).load(model.image).into(imageView!!)
+            videoCount?.setText("Videos ${model.itemCount}")
+            description?.setText(model.description)
             presenter = PlayListPresenter(this, model)
             presenter?.load()
+
         }
     }
 
@@ -50,7 +61,7 @@ class PlaylistActivity : AppCompatActivity(), PlayListView,
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
+                adapterPlay?.filter?.filter(newText)
                 return false
             }
         })
@@ -70,11 +81,12 @@ class PlaylistActivity : AppCompatActivity(), PlayListView,
         imageView = findViewById(R.id.thumbnail)
         titleTV = findViewById(R.id.title)
         videoCount = findViewById(R.id.video_count)
+        description = findViewById(R.id.description)
     }
 
     override fun onDataAvailable(list: MutableList<PlaylistVideo>) {
         if (adapterPlay == null) {
-            adapterPlay = PlaylistRecyclerAdapter(list, this)
+            adapterPlay = PlaylistRecyclerAdapter(list.toMutableList(), list, this)
             recyclerView?.layoutManager = LinearLayoutManager(this)
             recyclerView?.adapter = adapterPlay
         } else {

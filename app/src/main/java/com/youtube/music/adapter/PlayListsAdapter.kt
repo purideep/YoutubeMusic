@@ -47,7 +47,7 @@ class PlayListsAdapter(
 
         val linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        val adapter = PlaylistRecyclerAdapter(model.list, listener)
+        val adapter = PlaylistRecyclerAdapter(model.list.toMutableList(), model.list, listener)
         holder.recyclerView.layoutManager = linearLayoutManager
         holder.recyclerView.adapter = adapter
     }
