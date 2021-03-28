@@ -8,12 +8,14 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
 import com.youtube.music.R
+import com.youtube.music.model.PlayListModel
 import com.youtube.music.model.PlaylistVideo
 
 class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener {
     var player: YouTubePlayerView? = null
     var mPlayer: YouTubePlayer? = null
-    var videoId: String = "aBTvO-VwAN4"
+    var videoId: String = ""
+    var playListId = ""
     val TAG = javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +24,15 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
 
         player = findViewById(R.id.player)
         val data = intent.getSerializableExtra("data")
+
         if (data != null) {
             if (data is PlaylistVideo) {
                 videoId = data.videoId
-                player?.initialize("AIzaSyDLXWe0YWuArGyVm09b5qFtaVUcQZt8MnI", this)
+
+            } else if (data is PlayListModel) {
+                playListId = data.id
             }
+            player?.initialize("AIzaSyDLXWe0YWuArGyVm09b5qFtaVUcQZt8MnI", this)
         }
     }
 
@@ -37,6 +43,7 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
     ) {
         Log.e(TAG, "onInitializationSuccess")
         mPlayer = p1
+//        mPlayer?.lis
         //Enables automatic control of orientation
         mPlayer?.fullscreenControlFlags = YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
 
@@ -47,10 +54,16 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
         mPlayer?.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI)
 
         if (!p2) {
-            //player.cueVideo("9rLZYyMbJic");
-            mPlayer?.loadVideo(videoId)
+
+            if (videoId.isNotBlank()) {
+                mPlayer?.loadVideo(videoId)
+            } else {
+                mPlayer?.loadPlaylist(playListId)
+            }
+
         } else {
             mPlayer?.play()
+
         }
     }
 

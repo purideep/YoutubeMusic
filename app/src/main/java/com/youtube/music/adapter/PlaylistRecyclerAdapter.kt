@@ -11,7 +11,7 @@ import com.youtube.music.model.PlayListModel
 import com.youtube.music.model.PlaylistVideo
 
 class PlaylistRecyclerAdapter(
-    private var list: List<PlaylistVideo>,
+    var list: MutableList<PlaylistVideo>,
     val listener: PlayListsAdapter.PlayListAdapterListener
 ) :
     RecyclerView.Adapter<PlaylistRecyclerAdapter.ViewHolder>() {
