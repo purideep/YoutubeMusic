@@ -19,6 +19,7 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_videoplay)
+
         player = findViewById(R.id.player)
         val data = intent.getSerializableExtra("data")
         if (data != null) {
